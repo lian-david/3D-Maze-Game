@@ -66,6 +66,13 @@ class DFSMaze3DGenerator extends Maze3DGenerator {
         let stack = [[coords.startLevel, coords.startRow, coords.startCol]];
         let visited = [[coords.startLevel, coords.startRow, coords.startCol]];
         let currCell = [coords.startLevel, coords.startRow, coords.startCol];
+        if (coords.startRow < this.#rows - 1) {
+            maze.levels[coords.startLevel].grid[coords.startRow][coords.startCol].values.back = false;
+            maze.levels[coords.startLevel].grid[coords.startRow + 1][coords.startCol].values.forward = false;
+        } else {
+            maze.levels[coords.startLevel].grid[coords.startRow + 1][coords.startCol].values.back = false;
+            maze.levels[coords.startLevel].grid[coords.startRow][coords.startCol].values.forward = false;
+        }
         
         while (stack.length) {
             let neighbors = [[currCell[0], currCell[1] + 1, currCell[2]], [currCell[0], currCell[1] - 1, currCell[2]],
@@ -73,10 +80,9 @@ class DFSMaze3DGenerator extends Maze3DGenerator {
                 [currCell[0] + 1, currCell[1], currCell[2]], [currCell[0] - 1, currCell[1], currCell[2]]];
             
             let notVisited = neighbors.filter(n => (n[0] >= 0 && n[0] < this.levels && n[1] >= 0 && n[1] < this.#rows
-                && n[2] > 0 && n[2] < this.#cols && !visited.includes(n)));
+                && n[2] > 0 && n[2] < this.#cols && !visited.some(c => (n[0] === c[0] && n[1] === c[1] && n[2] === c[2]))));
             
             if (notVisited.length) {
-                stack.push(currCell);
                 let n = notVisited[Math.floor(Math.random() * notVisited.length)];
                 maze.levels[n[0]].grid[n[1]][n[2]].values.left = false;
                 maze.levels[n[0]].grid[n[1]][n[2] - 1].values.right = false;
@@ -90,8 +96,10 @@ class DFSMaze3DGenerator extends Maze3DGenerator {
             } else {
                 currCell = stack.pop();
             }
+            if (currCell[0] === coords.endLevel && currCell[1] === coords.endRow && currCell[2] === coords.endCol) {
+                return maze;
+            }
         }
-        return maze;
     }
 }
 
