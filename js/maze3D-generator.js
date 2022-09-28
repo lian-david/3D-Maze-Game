@@ -6,13 +6,15 @@ import Maze3D from "./maze3D.js";
 class Maze3DGenerator {
     #rows
     #cols
+    #levels
 
-    constructor(rows, cols) {
+    constructor(levels, rows, cols) {
         if (this.constructor === Maze3DGenerator) {
             throw new Error("Abstract class Maze3DGenerator cannot be instantiated.");
         }
         this.#rows = rows;
         this.#cols = cols;
+        this.#levels = levels;
     }
 
     /**
@@ -20,7 +22,7 @@ class Maze3DGenerator {
      * @returns instance of Maze3D
      */
     generate() {
-        return new Maze3D(this.#rows, this.#cols);
+        return new Maze3D(this.#levels, this.#rows, this.#cols);
     }
 
     /**
@@ -33,6 +35,37 @@ class Maze3DGenerator {
         const end = Date.now();
         const totalTime = end - start;
         return `Execution time: ${totalTime} ms`;
+    }
+
+    /**
+     * Generates random start and end coordinates 
+     * @returns object containing random coordinates
+     */
+    generateRandCoords() {
+        let startRow = Math.floor(Math.random() * this.#rows);
+        let startCol = Math.floor(Math.random() * this.#cols);
+        let endRow = Math.floor(Math.random() * this.#rows);
+        let endCol = Math.floor(Math.random() * this.#cols);
+        while (startRow === endRow || startCol === endCol) {
+            endRow = Math.floor(Math.random() * this.#rows);
+            endCol = Math.floor(Math.random() * this.#cols);
+        }
+
+        let startLevel = Math.floor(Math.random() * this.#levels);
+        let endLevel = Math.floor(Math.random() * this.#levels);
+        while (startLevel === endLevel || endLevel < startLevel) {
+            endLevel = Math.floor(Math.random() * this.#levels);
+        }
+
+        return {startRow, startCol, endRow, endCol, startLevel, endLevel};
+    }
+
+    /**
+     * Generates random integer for wall placement 
+     * @returns random integer 
+     */
+    getRandInt() {
+        return Math.floor(Math.random() * this.#cols);
     }
 }
 
