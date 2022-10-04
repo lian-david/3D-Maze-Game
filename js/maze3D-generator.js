@@ -17,6 +17,18 @@ class Maze3DGenerator {
         this.#levels = levels;
     }
 
+    get rows() {
+        return this.#rows;
+    }
+
+    get cols() {
+        return this.#cols;
+    }
+
+    get levels() {
+        return this.#levels;
+    }
+
     /**
      * Function to generate maze 
      * @returns instance of Maze3D
@@ -58,14 +70,6 @@ class Maze3DGenerator {
         }
 
         return {startRow, startCol, endRow, endCol, startLevel, endLevel};
-    }
-
-    /**
-     * Generates random integer for wall placement 
-     * @returns random integer 
-     */
-    getRandInt() {
-        return Math.floor(Math.random() * this.#cols);
     }
 }
 

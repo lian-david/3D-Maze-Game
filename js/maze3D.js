@@ -6,12 +6,13 @@ import Cell from "./cell.js";
 class Maze3D {
     #rows
     #cols
+    #levels
     #cellTypes
 
     constructor(levels, rows, cols) {
         this.#rows = rows;
         this.#cols = cols;
-        this.levels = this.generateLevels(levels);
+        this.#levels = this.generateLevels(levels);
 
         this.#cellTypes = new Map([
             ["wall", "|"],
@@ -23,6 +24,18 @@ class Maze3D {
             ["S", "S"],
             ["E", "E"]
         ]);
+    }
+
+    get rows() {
+        return this.#rows;
+    }
+
+    get cols() {
+        return this.#cols;
+    }
+
+    get levels() {
+        return this.#levels;
     }
 
     /**
