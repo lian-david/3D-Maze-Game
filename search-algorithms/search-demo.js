@@ -1,8 +1,8 @@
-import DFSMaze3DGenerator from "./js/dfs-maze3D-generator";
-import Maze3DAdapter from "./search-algorithms/adapter";
-import BreadthFirstSearch from "./search-algorithms/breadth-first-search";
-import DepthFirstSearch from "./search-algorithms/depth-first-search";
-import AStar from "./search-algorithms/astar";
+import DFSMaze3DGenerator from "../js/dfs-maze3D-generator.js";
+import Maze3DAdapter from "./adapter.js";
+import BreadthFirstSearch from "./breadth-first-search.js";
+import DepthFirstSearch from "./depth-first-search.js";
+import AStar from "./astar.js";
 
 class SearchDemo {
     run() {
@@ -23,7 +23,7 @@ class SearchDemo {
         astar.search(adapter);
         const astarStates = astar.getNumberOfNodesEvaluated();
 
-        return `Number of states evaluated: \n BFS: ${bfsStates} \n DFS: ${dfsStates} \n ${astarStates}`;
+        return `Number of states evaluated: \n BFS: ${bfsStates} \n DFS: ${dfsStates} \n A*: ${astarStates}`;
     }
 }
 

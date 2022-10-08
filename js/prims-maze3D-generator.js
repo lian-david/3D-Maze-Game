@@ -46,15 +46,15 @@ class PrimsMaze3DGenerator extends Maze3DGenerator {
                 }
             }
         }
-
-        let cellsInMaze = [[coords.startLevel, coords.startRow, coords.startCol]];
-        let wallList = [[coords.startLevel, coords.startRow + 1, coords.startCol], [coords.startLevel, coords.startRow, coords.startCol + 1]];
+        
         if (coords.endRow < this.rows - 1) {
             maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol].values.back = false;
             maze.levels[coords.endLevel].grid[coords.endRow + 1][coords.endCol].values.forward = false;
             if (coords.endCol < this.cols - 1) {
                 maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol].values.right = false;
                 maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol + 1].values.left = false;
+            } else {
+                maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol].values.left = false;
             }
         } else {
             maze.levels[coords.endLevel].grid[coords.endRow - 1][coords.endCol].values.back = false;
@@ -62,9 +62,14 @@ class PrimsMaze3DGenerator extends Maze3DGenerator {
             if (coords.endCol < this.cols - 1) {
                 maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol].values.right = false;
                 maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol + 1].values.left = false;
+            } else {
+                maze.levels[coords.endLevel].grid[coords.endRow][coords.endCol].values.left = false;
             }
         }
 
+        let cellsInMaze = [[coords.startLevel, coords.startRow, coords.startCol]];
+        let wallList = [[coords.startLevel, coords.startRow + 1, coords.startCol], [coords.startLevel, coords.startRow, coords.startCol + 1]];
+        
         while (wallList.length) {
             let wall = wallList[Math.floor(Math.random() * wallList.length)];
             let wallNeighbors = [[wall[0], wall[1] + 1, wall[2]], [wall[0], wall[1] - 1, wall[2]],

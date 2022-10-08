@@ -65,10 +65,13 @@ class Maze3DGenerator {
 
         let startLevel = Math.floor(Math.random() * this.#levels);
         let endLevel = Math.floor(Math.random() * this.#levels);
-        while (startLevel === endLevel || endLevel < startLevel) {
-            endLevel = Math.floor(Math.random() * this.#levels);
-        }
 
+        if (this.#levels > 1) {
+            while (startLevel === endLevel || endLevel < startLevel) {
+                endLevel = Math.floor(Math.random() * this.#levels);
+            }
+        }
+        
         return {startRow, startCol, endRow, endCol, startLevel, endLevel};
     }
 }

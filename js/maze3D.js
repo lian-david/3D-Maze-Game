@@ -65,7 +65,7 @@ class Maze3D {
         for (let i = 0; i < mat.length; i++) {
             mat[i] = new Array(this.#cols);
             for (let j = 0; j < mat[i].length; j++) {
-                mat[i][j] = new Cell([i, j]);
+                mat[i][j] = new Cell();
             }
         }
         return mat;

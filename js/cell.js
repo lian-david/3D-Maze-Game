@@ -2,8 +2,7 @@
  * Class used to represent cell of maze matrix 
  */
 class Cell {
-    constructor(location) {
-        this.location = location;
+    constructor() {
         this.values = {
             left: false,
             right: false,

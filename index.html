@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <title>3D Maze Game</title>
 </head>
 <body>
+    <main>
+        <h1>3D Maze Game</h1>
+        <ul>
+            <li>
+                <label for="name">Name</label>
+                <input type="text" id="name" pattern="[A-Za-z]+" required>
+                <p class="error" aria-live="polite"></p>
+            </li>
+            <li>
+                <label for="rows">Rows</label>
+                <input type="number" id="rows" pattern="\d+" min="2" required>
+                <p class="error" aria-live="polite"></p>
+            </li>
+            <li>
+                <label for="cols">Columns</label>
+                <input type="number" id="cols" pattern="\d+" min="2" required>
+                <p class="error" aria-live="polite"></p>
+            </li>
+            <li>
+                <label for="levels">Levels</label>
+                <input type="number" id="levels" pattern="\d+" min="1" required>
+                <p class="error" aria-live="polite"></p>
+            </li>
+            <li>
+                <button id="startGame">Start New Game</button>
+            </li>
+            <li>
+                <label for="search">Search Algos</label>
+                <select id="search">
+                    <option value="dfs">DFS</option>
+                    <option value="bfs">BFS</option>
+                    <option value="astar">A*</option>
+                </select>
+            </li>
+            <li>
+                <button id="solve">Solve Game</button>
+            </li>
+        </ul>
+        <aside id="maze"></aside>
+        <aside id="moveButtons">
+            <button id="moveUp" hidden>Go Up Level</button>
+            <button id="moveDown" hidden>Go Down Level</button>
+        </aside>
+    </main>
+    
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

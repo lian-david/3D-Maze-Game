@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 6rem;
+}
+
+ul {
+    list-style-type: none;
+    grid-column: 1;
+}
+
+label {
+    display: inline-block;
+    width: 5rem;
+}
+
+select {
+    margin-bottom: 1rem;
+    width: 10rem;
+}
+
+select:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+#maze {
+    grid-column: 2;
+    border: 2px solid black;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: 1px solid black;
+    border-radius: 5%;
+    margin-left: 5.3rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+}
+
+button:hover {
+    background-color: #eee;
+}
+
+.grid {
+    display: flex;
+}
+
+.wall {
+    background-color: darkslategrey;
+}
+
+.cell {
+    background-color: white;
+}
+
+#moveButtons {
+    grid-column: 2;
+    margin: auto;
+}
+
+#moveUp {
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: auto;
+}
+
+#moveDown {
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: auto;
+}
+
+.error {
+    font-size: 75%;
+    margin-left: 5.3rem;
+    margin-top: 0;
+    color: darkred;
+    width: 10.2rem;
+}
+
+.error.active {
+    border: 1px solid darkred;
+    padding: 0.5em 0.1em;
+}
+
+@media screen and (max-width: 480px){
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    #maze {
+        grid-column: 1;
+        margin-left: 1.5rem;
+    }
+
+    #moveButtons {
+        grid-column: 1;
+    }
+}
