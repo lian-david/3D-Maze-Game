@@ -55,6 +55,12 @@ button:hover {
     background-color: #eee;
 }
 
+button:focus {
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
 .grid {
     display: flex;
 }
@@ -69,7 +75,6 @@ button:hover {
 
 #moveButtons {
     grid-column: 2;
-    margin: auto;
 }
 
 #moveUp {
@@ -79,6 +84,24 @@ button:hover {
 }
 
 #moveDown {
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: auto;
+}
+
+#restart {
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: auto;
+}
+
+#save {
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: auto;
+}
+
+#hint {
     margin-top: 1rem;
     width: 5rem;
     margin-left: auto;

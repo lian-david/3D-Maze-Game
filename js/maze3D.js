@@ -7,6 +7,8 @@ class Maze3D {
     #rows
     #cols
     #levels
+    #start
+    #end
     #cellTypes
 
     constructor(levels, rows, cols) {
@@ -36,6 +38,22 @@ class Maze3D {
 
     get levels() {
         return this.#levels;
+    }
+
+    get start() {
+        return this.#start;
+    }
+
+    set start(newStart) {
+        this.#start = newStart;
+    }
+
+    get end() {
+        return this.#end;
+    }
+
+    set end(newEnd) {
+        this.#end = newEnd;
     }
 
     /**
