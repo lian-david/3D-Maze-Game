@@ -1,7 +1,9 @@
 # 3D-Maze-Game
 
-3D Maze utilizing Prim's algorithm to generate
+3D Maze utilizing Prim's algorithm to generate maze.
 
-    -other algorithms to generate include DFS and a simple algorithm
-    
-    -search algorithms for hints include BFS, DFS, and A*
+-Hints and solution are provided by chosen search algorithms.
+
+-Search Algorithms: BFS, DFS, A*
+
+-Maze Generation Algorithms: Simple, DFS, Prim's
