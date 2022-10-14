@@ -5,8 +5,7 @@ import FormValidation from "./form-validation.js";
 //initial maze display
 const mazeDisplayGen = new PrimsMaze3DGenerator(1, 11, 11);
 const mazeDisplay3D = mazeDisplayGen.generate();
-console.log(mazeDisplay3D.toString());
-const mazeDisplay = new MazeDisplay(mazeDisplay3D, "../images/character.png", "../images/end-arrow.png");
+const mazeDisplay = new MazeDisplay(mazeDisplay3D, "images/character.png", "images/end-arrow.png");
 mazeDisplay.generate(0);
 
 //form validation
@@ -46,8 +45,7 @@ btnSubmit.addEventListener("click", e => {
         mazeGrid.firstChild.remove();
         const mazeGen = new PrimsMaze3DGenerator(Number(levels.value), Number(rows.value), Number(cols.value));
         const maze3D = mazeGen.generate();
-        console.log(maze3D.toString());
-        const maze = new MazeDisplay(maze3D, "../images/character.png", "../images/end-arrow.png");
+        const maze = new MazeDisplay(maze3D, "images/character.png", "images/end-arrow.png");
         maze.generate(maze3D.start[0]); 
         maze.run();
     }
@@ -73,7 +71,7 @@ loadBtn.addEventListener("click", e => {
         if (prevMaze) {
             mazeGrid.firstChild.remove();
             const prevMazeGen = JSON.parse(prevMaze);
-            const newMaze = new MazeDisplay(prevMazeGen, "../images/character.png", "../images/end-arrow.png");
+            const newMaze = new MazeDisplay(prevMazeGen, "images/character.png", "images/end-arrow.png");
             newMaze.generate(prevMazeGen.start[0]);
             newMaze.run();
         } else {
