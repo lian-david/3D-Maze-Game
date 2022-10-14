@@ -1,4 +1,4 @@
-# 3D-Maze-Game
+# 3D Maze Game
 
 3D Maze utilizing Prim's algorithm to generate maze.
 
