@@ -198,7 +198,7 @@ class MazeDisplay {
         const astar = new AStar();
         this.#currX = Math.round(this.#currX);
         this.#currY = Math.round(this.#currY);
-        this.#maze.start = [this.#currLevel, this.#currX, this.#currY];
+        this.#maze.start = [this.#currLevel, Math.round(this.#currX), Math.round(this.#currY)];
         const adapter = new Maze3DAdapter(this.#maze);
 
         let path;
@@ -264,18 +264,14 @@ class MazeDisplay {
     #save() {
         const name = document.getElementById("name");
         const prevName = document.getElementById("prevName");
-        const mazeObj = {};
-
-        mazeObj.rows = this.#maze.rows;
-        mazeObj.cols = this.#maze.cols;
-        mazeObj.levels = this.#maze.levels;
-        mazeObj.end = this.#maze.end;
-        mazeObj.start = [Math.round(this.#currLevel), 
-            Math.round(this.#currX), Math.round(this.#currY)];
+        
+        this.#maze.levels[this.#maze.start[0]].grid[this.#maze.start[1]][this.#maze.start[2]].values.start = false;
+        this.#maze.levels[this.#currLevel].grid[Math.round(this.#currX)][Math.round(this.#currY)].values.start = true;
+        this.#maze.start = [this.#currLevel, Math.round(this.#currX), Math.round(this.#currY)];
         if (name.value) {
-            localStorage.setItem(name.value, JSON.stringify(mazeObj));
-        } else {
-            localStorage.setItem(prevName.value, JSON.stringify(mazeObj));
+            localStorage.setItem(name.value, JSON.stringify(this.#maze));
+        } else if (prevName.value) {
+            localStorage.setItem(prevName.value, JSON.stringify(this.#maze));
         }
     }
 

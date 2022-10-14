@@ -56,6 +56,10 @@ class Maze3D {
         this.#end = newEnd;
     }
 
+    toJSON() {
+        return {rows: this.#rows, cols: this.#cols, levels: this.#levels, start: this.#start, end: this.#end};
+    }
+
     /**
      * Function to generate each level's grid
      * @param {Number} levels 
