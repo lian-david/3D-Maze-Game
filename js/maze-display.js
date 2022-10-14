@@ -391,6 +391,7 @@ class MazeDisplay {
         });
 
         solve.addEventListener("click", () => {
+            restart.hidden = true;
             hint.hidden = true;
             const path = this.#getPath();
             player.style.transition = "left 0.5s, top 0.5s";
